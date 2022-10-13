@@ -1,0 +1,20 @@
+Description: include bug report email in manpages.
+Author: Fabio Augusto De Muzio Tobich <ftobich@gmail.com>
+Bug-Debian: https://bugs.debian.org/527555
+Last-Update: 2020-05-26
+--- mpack-1.6.orig/unixpk.man
++++ mpack-1.6/unixpk.man
+@@ -153,3 +153,5 @@ Directory to store temporary files.  Def
+ .TP
+ .B SPLITSIZE
+ Default value of the -m switch.
++.SH "REPORTING BUGS"
++Send all bug reports to mpack\-bugs@andrew.cmu.edu.
+--- mpack-1.6.orig/unixunpk.man
++++ mpack-1.6/unixunpk.man
+@@ -121,3 +121,5 @@ Directory to store temporary files.  Def
+ .TP
+ .B $TMPDIR/m-prts-$USER/
+ Directory used to store partial messages awaiting reassembly.
++.SH "REPORTING BUGS"
++Send all bug reports to mpack\-bugs@andrew.cmu.edu.

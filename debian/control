@@ -1,0 +1,20 @@
+Source: mpack
+Section: mail
+Priority: optional
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+Vcs-Browser: https://salsa.debian.org/debian/mpack
+Vcs-Git: https://salsa.debian.org/debian/mpack.git
+
+Package: mpack
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: default-mta | mail-transport-agent, inews
+Description: tools for encoding/decoding MIME messages
+ Mpack and munpack are utilities for encoding and decoding
+ (respectively) binary files in MIME (Multipurpose Internet
+ Mail Extensions) format mail messages. For compatibility
+ with older forms of transferring binary files, the munpack
+ program can also decode messages in split-uuencoded format.

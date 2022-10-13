@@ -1,0 +1,11 @@
+Test-Command: mpack 2>&1 | grep '^mpack version'
+
+Test-Command: munpack --version 2>&1 | grep '^munpack version'
+
+Test-Command: cp -a debian/tests/files/MESSAGE $AUTOPKGTEST_TMP;
+              mpack -s "mpack test" -o $AUTOPKGTEST_TMP/test.eml $AUTOPKGTEST_TMP/MESSAGE;
+			  cat $AUTOPKGTEST_TMP/test.eml
+
+Test-Command: cp -a debian/tests/files/TEST.eml $AUTOPKGTEST_TMP;
+              munpack -C $AUTOPKGTEST_TMP $AUTOPKGTEST_TMP/TEST.eml;
+			  cat $AUTOPKGTEST_TMP/MESSAGE

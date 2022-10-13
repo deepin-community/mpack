@@ -1,0 +1,17 @@
+Description: fix non-standard use of MIME-Version in mail headers
+Author: Fabio Augusto De Muzio Tobich <ftobich@gmail.com>
+Bug-Debian: https://bugs.debian.org/964959
+Last-Update: 2020-07-13
+Index: mpack/encode.c
+===================================================================
+--- mpack.orig/encode.c
++++ mpack/encode.c
+@@ -125,7 +125,7 @@ int encode(FILE *infile, FILE *applefile
+ 	
+ 	msgid = os_genid();
+ 	fprintf(outfile, "Message-ID: <%s>\n", msgid);
+-	fprintf(outfile, "Mime-Version: 1.0\n");
++	fprintf(outfile, "MIME-Version: 1.0\n");
+ 	if (headers) fputs(headers, outfile);
+ 	if (numparts > 1) {
+ 	    fprintf(outfile, "Subject: %s (%02d/%02d)\n", subject,

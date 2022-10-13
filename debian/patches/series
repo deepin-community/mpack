@@ -1,0 +1,9 @@
+01_legacy.patch
+02_fix-permissions.patch
+03_specify-filename-replacement-character.patch
+04_fix-return-error-code.patch
+05_include-bug-report-in-manpages.patch
+06_fix-makefile.patch
+07_fix-decode-base64-attachment.patch
+08_fix-mime-version.patch
+09_remove-debugging-message.patch

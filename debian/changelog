@@ -1,0 +1,317 @@
+mpack (1.6-18) unstable; urgency=medium
+
+  * QA upload.
+  * Set Debian QA Group as maintainer. (see #996492)
+  * debian/control:
+      - Bumped Standards-Version to 4.6.0.
+      - Removed Homepage field since it doesn't exist anymore.
+  * debian/copyright:
+      - Removed Upstream-Contact and Source fields since they don't exist
+        anymore.
+      - Updated my email and years in packaging block.
+  * debian/salsa-ci.yml: updated to use Debian recipe for salsa CI.
+  * debian/upstream/metadata: removed since there's no upstream info anymore.
+  * debian/watch: removed since there's no upstream repository anymore.
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@debian.org>  Thu, 14 Oct 2021 16:21:33 -0300
+
+mpack (1.6-17) unstable; urgency=medium
+
+  * debian/control: bumped Standards-Version to 4.5.1.
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@gmail.com>  Mon, 14 Dec 2020 10:41:27 -0300
+
+mpack (1.6-16) unstable; urgency=medium
+
+  * New upstream. Consequently:
+      - debian/control: updated Homepage field. (Closes: #958199)
+      - debian/copyright:
+          ~ Added Comment field.
+          ~ Added Upstream-Contact field.
+          ~ Updated Source field.
+      - debian/watch: updated.
+      - debian/upstream/metadata: created.
+  * debian/patches/:
+      - 08_fix-mime-version.patch: added to fix non-standard use of
+        MIME-Version in mail headers. Thanks to Sam Kemp <debian@sdkemp.co.uk>.
+        (Closes: #964959)
+      - 09_remove-debugging-message.patch: added to remove a debugging message
+        left behind. (Closes: #965008)
+  * debian/tests/files: fixed a typo in the test files.
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@gmail.com>  Tue, 14 Jul 2020 09:23:36 -0300
+
+mpack (1.6-15) unstable; urgency=medium
+
+  * New maintainer. (Closes: #925069)
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@gmail.com>  Wed, 10 Jun 2020 11:48:21 -0300
+
+mpack (1.6-14) unstable; urgency=medium
+
+  * QA upload.
+  * debian/control: added Vcs-* fields to source stanza.
+  * debian/salsa-ci.yml: added to provide CI tests for Salsa.
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@gmail.com>  Tue, 02 Jun 2020 20:01:32 -0300
+
+mpack (1.6-13) unstable; urgency=medium
+
+  * QA upload.
+  * Upload to unstable.
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@gmail.com>  Fri, 29 May 2020 08:12:42 -0300
+
+mpack (1.6-12) experimental; urgency=medium
+
+  * QA upload.
+  * Acknowledge previous NMUs. Thanks to Holger Levsen. (Closes: #875699)
+  * debian/clean: created to remove files left behind on upstream directory.
+  * debian/control:
+      - Changed Rules-Requires-Root from 'binary-targets' to 'no' in source
+        stanza.
+      - Removed 'dpkg-dev' from 'Build-Depends' field.
+  * debian/copyright:
+      - Migrated to 1.0 format.
+      - Updated all data.
+  * debian/docs: created to include README.unix.
+  * debian/patches:
+      - debian/patches/01_legacy.patch: changed directory to store temporary
+        files to '/tmp'. (Closes: #869259)
+      - debian/patches/02_fix-permissions.patch: fixed patch header.
+      - debian/patches/03_specify-filename-replacement-character.patch: added
+        to provide new feature. Thanks to Christopher League. (Closes: #676422)
+      - debian/patches/04_fix-return-error-code.patch: added to fix a bug where
+        munpack should return 1 on error. (Closes: #527555)
+      - debian/patches/05_include-bug-report-in-manpages.patch: bug report
+        section, with email, was included in manpages. (Closes: #527555)
+      - debian/patches/06_fix-makefile.patch: added to fix Makefile.am so the
+        package can be built with debhelper.
+      - debian/patches/07_fix-decode-base64-attachment.patch: added.
+        Thanks to Jacques Beigbeder. (LP: #1535630)
+      - Renamed older patches to keep a naming pattern.
+  * debian/rules: migrated to debhelper reduced form. (Closes: #749431, #845747)
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@gmail.com>  Thu, 28 May 2020 14:53:55 -0300
+
+mpack (1.6-11) unstable; urgency=medium
+
+  * QA upload.
+  * debian/patches: added a header to 01-legacy.patch.
+  * debian/rules: added DEB_BUILD_MAINT_OPTIONS variable to improve GCC
+    hardening.
+  * debian/source/options: bad compress options, removed.
+  * debian/tests/control: created to perform trivial CI tests.
+  * debian/tests/files: created to help support the tests.
+  * debian/watch: bumped to version 4.
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@gmail.com>  Wed, 13 May 2020 17:57:52 -0300
+
+mpack (1.6-10) unstable; urgency=medium
+
+  * QA upload.
+  * debian/control:
+    - Added 'default-mta' as an alternative to 'mail-transport-agent' in
+      Suggests field.
+    - Changed Rules-Requires-Root from 'no' to 'binary-targets', to fix build
+      issues.
+    - Organized Build-Depends field a little better.
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@gmail.com>  Tue, 12 May 2020 15:34:58 -0300
+
+mpack (1.6-9) unstable; urgency=medium
+
+  * QA upload.
+  * Set Debian QA Group as maintainer. (see #925069)
+  * Using new DH level format. Consequently:
+      - debian/control: Added 'debhelper-compat' in Build-Depends field and
+        bumped level to 13.
+  * debian/changelog: removed several trailing whitespaces.
+  * debian/control:
+    - Added Rules-Requires-Root: no.
+    - Bumped Standards-Version to 4.5.0.
+
+ -- Fabio Augusto De Muzio Tobich <ftobich@gmail.com>  Mon, 11 May 2020 09:21:44 -0300
+
+mpack (1.6-8.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Use "gzip -n" in debian/rules for reproducible results. (Closes: #777376)
+    Thanks to Chris Lamb for the patch!
+
+ -- Holger Levsen <holger@debian.org>  Wed, 13 Sep 2017 20:22:05 +0200
+
+mpack (1.6-8.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Do not specify bzip2 compressor to dh_builddeb
+    (Closes: #833230)
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Fri, 11 Nov 2016 16:17:54 +0000
+
+mpack (1.6-8) unstable; urgency=low
+
+  * CVE-2011-4919 - Fix permissions
+    Patch by Sebastian Pipping
+    Add patch 02-655971-fix-permissions.patch
+    Closes: #655971
+  * Standards version is 3.9.3
+  * Use hardening options
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Sun, 10 Jun 2012 09:02:03 +1000
+
+mpack (1.6-7) unstable; urgency=low
+
+  * Standards-Version is 3.9.2
+  * Fix debian-rules-missing-recommended-target
+  * Debian source format is 3.0 (quilt)
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Tue, 29 Nov 2011 09:40:28 +1100
+
+mpack (1.6-6) unstable; urgency=low
+
+  * Priority is optional; closes: #416569
+  * Standards-Version is 3.8.0
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Tue, 23 Sep 2008 19:24:06 +1000
+
+mpack (1.6-5) unstable; urgency=low
+
+  * Bumped Standards-Version to 3.7.3
+  * Added homepage control header
+  * Fixed the following lintian message:
+    - debian-rules-ignores-make-clean-error
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Sun, 30 Mar 2008 09:36:55 +1000
+
+mpack (1.6-4) unstable; urgency=low
+
+  * Fixed "munpack no longer preserves filename". Closes: #212283, #356457.
+    Patch by Ian Bygrave <ian@bygrave.me.uk>.
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Sat, 22 Jul 2006 13:42:22 +1000
+
+mpack (1.6-3) unstable; urgency=low
+
+  * Set Standards-Version to 3.7.2.
+  * Fixed "New option -a", closes: #184506. Patch by
+    James A Morrison <ja2morri@student.math.uwaterloo.ca>.
+  * Fixed "mpack -o /dev/stdout", closes: #303952.
+    Patch by "Sven Rudolph" <rudsve@drewag.de>.
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Sun, 25 Jun 2006 09:44:26 +1000
+
+mpack (1.6-2) unstable; urgency=low
+
+  * New maintainer, closes: #353129.
+  * ACKed NMUs.
+    - "NMU patch", closes: #321685.
+    - "FTBFS with gcc-3.4: conflicting types for 'malloc'", closes: #260652.
+    - "implicit function declarations are evil", closes: #153187.
+    - "Please remove inewsinn from Suggests", closes: #243737.
+    - "'man munpack' typo: Supresses", closes: #311460.
+  * Fixed the following linda errors:
+    - E: mpack; Binary /usr/bin/mpack contains unneeded section comment.
+    - E: mpack; Binary /usr/bin/munpack contains unneeded section comment.
+  * Set priority to standard and added homepage to description.
+  * Added watch file.
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Fri, 17 Feb 2006 08:13:08 +1100
+
+mpack (1.6-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Include patch by Daniel Schepler (based on earlier patches
+    by Roger Leigh and Andreas Jochens) to fix FTBFS with
+    gcc 4.0 (Closes: #260652) and other code problems
+    (Closes: #153187)
+  * Change priority to optional, I see no reason why this should be
+    standard.
+  * Remove inewsinn from suggests as it isn't in the archive anymore
+    (Closes: #243737)
+  * Fix typo in munpack man page (Closes: #311460)
+  * Bump Standards-Version to 3.6.2 (no changes)
+
+ -- Frank Lichtenheld <djpig@debian.org>  Sat,  6 Aug 2005 23:12:56 +0200
+
+mpack (1.6-1) unstable; urgency=low
+
+  * New upstream version, incorporating a number of Debian patches.
+  * Forward ported Debian patches:
+      - /usr/tmp to /var/tmp
+      - unixpk.c: Don't declare extern int errno
+  * munpack: Mention -t in usage info.  Closes: #182825, reported by
+    Dan Jacobson.
+  * Minor changes to function prototypes to fix the more alarming warnings.
+  * Invoke configure instead of just make, now that upstream uses autoconf.
+  * debian/rules: clean now deletes some autoconf junk.
+  * debian/rules: update DEB_BUILD_OPTIONS support to noopt and nostrip.
+  * debian/control: Recommend uudeview instead.
+  * Dropped postinst and prerm, since /usr/doc symlinks are no longer needed.
+  * debian/control: Update to standards version 3.6.0.
+
+ -- Richard Braakman <dark@xs4all.nl>  Fri, 25 Jul 2003 19:35:28 +0300
+
+mpack (1.5-9) unstable; urgency=low
+
+  * Handle empty parameter lists without crashing, such as in
+    "Content-Type: text/plain;".  Thanks to Henry Grebler for
+    finding this bug.
+  * [SECURITY] Do not accept disposition filenames like "../a".
+    Security impact is limited because only a single leading "../"
+    was accepted.  (closes #134210, reported by Herbert Xu)
+
+ -- Richard Braakman <dark@xs4all.nl>  Wed, 17 Jul 2002 12:01:31 +0300
+
+mpack (1.5-8) unstable; urgency=high
+
+  * [SECURITY] Fix buffer overflows in parsing of MIME headers.
+  * Removed emacs variables from the end of this changelog file.
+
+ -- Richard Braakman <dark@xs4all.nl>  Tue, 16 Jul 2002 01:50:55 +0300
+
+mpack (1.5-7) unstable; urgency=low
+
+  * Only declare "extern int errno" if errno is not a macro.
+
+ -- Richard Braakman <dark@xs4all.nl>  Sun, 20 May 2001 19:30:45 +0300
+
+mpack (1.5-6) unstable; urgency=low
+
+  * Made /var/tmp the default temp directory for mpack, just like
+    it is for munpack.  It used to be /tmp.  Also fixed the mpack
+    manpage, which used to say /usr/tmp.  Spotted by Alex King.
+    (closes #81997)
+  * Moved manpages to /usr/share.
+  * Made debian/rules sensitive to DEB_BUILD_OPTIONS environment variable.
+  * Moved documentation to /usr/share/doc/mpack.
+  * debian/postinst, prerm: Handle compatibility symlink /usr/doc/mpack.
+  * Set Standards-Version to 3.2.1.
+
+ -- Richard Braakman <dark@xs4all.nl>  Sun, 28 Jan 2001 12:31:17 +0200
+
+mpack (1.5-5) unstable; urgency=low
+
+  * Removed README.Debian and moved some bits of it to the copyright file.
+  * Standards-Version 2.4.0.0.
+
+ -- Richard Braakman <dark@xs4all.nl>  Sat,  7 Feb 1998 12:39:11 +0100
+
+mpack (1.5-4) unstable; urgency=low
+
+  * Changed TMPDIR default from /usr/tmp to /var/tmp for FSSTND compliance.
+  * Upgraded to policy version 2.3.0.1.
+  * Renamed README.debian to README.Debian.
+  * Don't use debmake.
+
+ -- Richard Braakman <dark@xs4all.nl>  Sun, 18 Jan 1998 02:03:47 +0100
+
+mpack (1.5-3) unstable; urgency=low
+
+  * Only Suggest rather than Recommend (#5628, #6616, #6881)
+  * Don't stall on non-printable characters in Subject: header (#11148)
+  * Upgraded to policy version 2.1.2.2
+  * Changed to new source format (#9450)
+  * New maintainer
+
+ -- Richard Braakman <dark@xs4all.nl>  Mon, 14 Jul 1997 21:52:05 +0200

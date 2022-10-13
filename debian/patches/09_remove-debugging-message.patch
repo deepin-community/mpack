@@ -1,0 +1,16 @@
+Description: remove a message used for debugging purposes only left behind
+Author: Fabio Augusto De Muzio Tobich <ftobich@gmail.com>
+Bug-Debian: https://bugs.debian.org/965008
+Last-Update: 2020-07-14
+Index: mpack/unixunpk.c
+===================================================================
+--- mpack.orig/unixunpk.c
++++ mpack/unixunpk.c
+@@ -60,7 +60,6 @@ int main(int argc, char **argv)
+ 
+ 	case 'r':
+ 	    replacement_char = optarg[0];
+-            printf("Replacement: '%c'\n", replacement_char);
+ 	    break;
+ 
+ 	case 'C':

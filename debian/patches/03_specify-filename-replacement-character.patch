@@ -1,0 +1,95 @@
+Description: allow user to specify filename replacement character.
+Author: Christopher League <league@contrapunctus.net>
+Bug-Debian: https://bugs.debian.org/676422
+Last-Update: 2012-06-06
+--- mpack-1.6.orig/unixos.c
++++ mpack-1.6/unixos.c
+@@ -50,6 +50,7 @@ extern int errno;
+ 
+ int overwrite_files = 0;
+ int didchat;
++char replacement_char = 'X';
+ 
+ /* The name of the file we're writing */
+ static char *output_fname = 0;
+@@ -194,13 +195,13 @@ FILE *os_newtypedfile(char *fname, char
+     for (p=fname; *p; p++) {
+ 	if (*p == '/') {
+ 	    if (!strncmp(p, "/../", 4)) {
+-		p[1] = p[2] = 'X';
++		p[1] = p[2] = replacement_char;
+ 	    }
+ 	    *p = '\0';
+ 	    (void) mkdir(fname, 0777);
+ 	    *p = '/';
+ 	}
+-	else if (!isprint(*p) || strchr(BADCHARS, *p)) *p = 'X';
++	else if (!isprint(*p) || strchr(BADCHARS, *p)) *p = replacement_char;
+     }
+ 
+     if (!fname[0]) {
+--- mpack-1.6.orig/unixunpk.c
++++ mpack-1.6/unixunpk.c
+@@ -31,6 +31,7 @@
+ 
+ extern int overwrite_files;
+ extern int didchat;
++extern char replacement_char;
+ int quiet;
+ 
+ void usage(void);
+@@ -43,7 +44,7 @@ int main(int argc, char **argv)
+     FILE *file;
+     int extractText = 0;
+     
+-    while ((opt = getopt(argc, argv, "qftC:")) != EOF) {
++    while ((opt = getopt(argc, argv, "qftr:C:")) != EOF) {
+ 	switch (opt) {
+ 	case 'f':
+ 	    overwrite_files = 1;
+@@ -57,6 +58,11 @@ int main(int argc, char **argv)
+ 	    extractText = 1;
+ 	    break;
+ 
++	case 'r':
++	    replacement_char = optarg[0];
++            printf("Replacement: '%c'\n", replacement_char);
++	    break;
++
+ 	case 'C':
+ 	    if (chdir(optarg)) {
+ 		perror(optarg);
+@@ -102,7 +108,7 @@ int main(int argc, char **argv)
+ 
+ void usage(void) {
+     fprintf(stderr, "munpack version %s\n", MPACK_VERSION);
+-    fprintf(stderr, "usage: munpack [-f] [-q] [-t] [-C directory] [files...]\n");
++    fprintf(stderr, "usage: munpack [-f] [-q] [-t] [-r character] [-C directory] [files...]\n");
+     exit(1);
+ }
+ 
+--- mpack-1.6.orig/unixunpk.man
++++ mpack-1.6/unixunpk.man
+@@ -13,6 +13,10 @@ munpack \- unpack messages in MIME or sp
+ .B \-t
+ ]
+ [
++.B \-r
++.I character
++]
++[
+ .B \-C
+ .I directory
+ ]
+@@ -59,6 +63,11 @@ default, text parts that do not have a f
+ unpacked.  This option effectively disables the ".desc" file feature
+ for MIME messages.
+ .TP
++.BI \-r " character"
++If the suggested filename contains invalid characters, they are
++replaced with this character. The default replacement character is
++"X".
++.TP
+ .BI \-C " directory"
+ Change the current directory to 
+ .I directory

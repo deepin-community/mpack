@@ -1,0 +1,16 @@
+Description: fix munpack fail to decode a base64 attachment
+ It's a patch for a bug in Ubuntu but it also affects Debian.
+Author: Jacques Beigbeder (https://launchpad.net/%7Ejacques-beigbeder/+contactuser)
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/mpack/+bug/1535630
+Last-Update: 2016-01-20
+--- mpack-1.6.orig/decode.c
++++ mpack-1.6/decode.c
+@@ -828,7 +828,7 @@ int ignoreMessage(struct part *inpart)
+ int handleMultipart(struct part *inpart, char *contentType, params contentParams, int extractText)
+ {
+     char *id;
+-    char *defaultContentType = "text/plain";
++    char *defaultContentType = "application/octet-stream";
+     int isAppleDouble = 0;
+ 
+     /* Components of multipart/digest have a different default content-type */

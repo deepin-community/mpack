@@ -1,0 +1,17 @@
+Message-ID: <33021.1594728981@m5a97.exata>
+Mime-Version: 1.0
+Subject: mpack test
+Content-Type: multipart/mixed; boundary="-"
+
+This is a MIME encoded message.  Decode it with "munpack"
+or any other MIME reading software.  Mpack/munpack is available
+via anonymous FTP in ftp.andrew.cmu.edu:pub/mpack/
+---
+Content-Type: application/octet-stream; name="MESSAGE"
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename="MESSAGE"
+Content-MD5: tCZgJFEy5YcDg0+6xP7PzQ==
+
+RmlsZSB3aXRoIGEgbWVzc2FnZSB0byB0ZXN0IG1wYWNrIGFuZCBtdW5wYWNrLgo=
+
+-----
